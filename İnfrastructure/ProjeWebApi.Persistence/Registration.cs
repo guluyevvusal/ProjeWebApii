@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ProjeWebApi.Application.Interface.Repositories;
 using ProjeWebApi.Persistence.Context;
+using ProjeWebApi.Persistence.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +23,8 @@ namespace ProjeWebApi.Persistence
             opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             // Burada Developmen appsettings-in connectionstringini tanıtmalıyıq.
+
+            services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
 
 
         }
