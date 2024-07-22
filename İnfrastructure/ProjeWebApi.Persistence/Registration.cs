@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ProjeWebApi.Persistence.UnitofWorks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProjeWebApi.Application.Interface.Repositories;
+using ProjeWebApi.Application.Interface.UnitofWorks;
 using ProjeWebApi.Persistence.Context;
 using ProjeWebApi.Persistence.Repositories;
 using System;
@@ -22,11 +24,17 @@ namespace ProjeWebApi.Persistence
             services.AddDbContext<AppDbContext>(opt => 
             opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            // Burada Developmen appsettings-in connectionstringini tanıtmalıyıq.
+            // Burada Development appsettings-in connectionstringini tanıtmalıyıq.
 
             services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
+
             services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
 
+            services.AddScoped<IUnitofWork,UnitofWork>();
+
+
+
+            //Burada dependency injection işlemide heyata keçirilir
 
         }
 
