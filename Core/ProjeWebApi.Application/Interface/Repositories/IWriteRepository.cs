@@ -9,9 +9,17 @@ using System.Threading.Tasks;
 
 namespace ProjeWebApi.Application.Interface.Repositories
 {
-    public interface IWriteRepository
+    public interface IWriteRepository<T> where T : class, IEntitybase, new()
     {
-        
+        Task AddAsync(T entity);
+
+        Task AddRangAsync(IList<T> entities);
+
+        Task<T> UpdateAsync(T entity);
+
+        Task HardDeleteAsync(T entity);
+
+     
     
     
     
