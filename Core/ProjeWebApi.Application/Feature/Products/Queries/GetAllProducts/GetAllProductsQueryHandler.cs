@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using MediatR.Pipeline;
+using ProjeWebApi.Application.DTOs;
+using ProjeWebApi.Application.Interface.AutoMapper;
 using ProjeWebApi.Application.Interface.UnitofWorks;
 using ProjeWebApi.Domen.Entities;
 using System;
@@ -10,22 +12,25 @@ using System.Threading.Tasks;
 
 namespace ProjeWebApi.Application.Feature.Products.Queries.GetAllProducts
 {
+    // Handler Request ile Response arasında elaqe yaradır.
     public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQueryRequest, IList<GetAllProductsQueryResponse>>
     {
         private readonly IUnitofWork unitofWork;
+        private readonly IMapper mapper;
 
-        public GetAllProductsQueryHandler(IUnitofWork unitofWork)
+        public GetAllProductsQueryHandler(IUnitofWork unitofWork, IMapper mapper)
         {
             this.unitofWork = unitofWork;
+            this.mapper = mapper;
         }
 
-
-        //Request ile Response arasında elaqe yaradır.
-
-
-
-
         // Burada field-ler yaradırıq.
+
+
+
+
+
+
 
         public async Task<IList<GetAllProductsQueryResponse>> Handle(GetAllProductsQueryRequest request, CancellationToken cancellationToken)
         {
@@ -33,22 +38,15 @@ namespace ProjeWebApi.Application.Feature.Products.Queries.GetAllProducts
             //Burada productlarımızı alırıq, daha sonra ise response göndereceyik
 
 
+          var brand = mapper.Map<BrandDto, Brand>(new Brand());
 
-            List<GetAllProductsQueryResponse> response = new();
+            var map = mapper.Map<GetAllProductsQueryResponse, Product>(products);
 
-            foreach (var product in products)
-            {
-                new GetAllProductsQueryResponse
-                {
-                    
-                    Title = product.Title,
-                    Description = product.Description,
-                    Price = product.Price - (product.Price * product.Discount / 100),
-                    Discount = product.Discount,
-
-                };
-                return response;
-            }
+            foreach (var item in map)
+                item.Price -= (item.Price * item.Discount / 1000);
+       
+         return map;
         }
+       
     }
 }

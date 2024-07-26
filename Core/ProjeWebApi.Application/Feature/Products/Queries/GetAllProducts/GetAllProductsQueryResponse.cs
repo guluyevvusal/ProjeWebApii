@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjeWebApi.Application.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,7 @@ namespace ProjeWebApi.Application.Feature.Products.Queries.GetAllProducts
         public string Title { get; set; }
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
+
+        public BrandDto Brand { get; set; }
     }
 }
