@@ -10,7 +10,7 @@ namespace ProjeWebApi.Application
 {
     public static class Registration
     {
-        public static void AddAplication(this IServiceCollection services)
+        public static void AddApplication(this IServiceCollection services)
         {
             var assembly = Assembly.GetExecutingAssembly();
 

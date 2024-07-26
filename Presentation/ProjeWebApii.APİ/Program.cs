@@ -1,5 +1,6 @@
 using ProjeWebApi.Persistence;
 using ProjeWebApi.Application;
+using ProjeWebApi.Mapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,13 +20,12 @@ builder.Configuration
 
 
 builder.Services.AddPersistence(builder.Configuration);
-
-
-builder.Services.AddAplication();
-
+builder.Services.AddApplication();
+builder.Services.AddCustomMapper();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

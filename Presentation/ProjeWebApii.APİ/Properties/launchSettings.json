@@ -4,12 +4,12 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:29001",
+      "applicationUrl": "http://localhost:18623",
       "sslPort": 0
     }
   },
   "profiles": {
-    "ProjeWebApi.Development": {
+    "ProjeWeb.Api.Development": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
@@ -19,7 +19,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "ProjeWebApi.Production": {
+    "ProjeWeb.Api.Production": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
@@ -38,3 +38,4 @@
       }
     }
   }
+}
