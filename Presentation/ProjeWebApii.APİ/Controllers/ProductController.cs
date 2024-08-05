@@ -1,6 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProjeWebApi.Application.Feature.Products.Command.CreateProduct;
+using ProjeWebApi.Application.Feature.Products.Command.DeleteProduct;
+using ProjeWebApi.Application.Feature.Products.Command.UpdateProduct;
 using ProjeWebApi.Application.Feature.Products.Queries.GetAllProducts;
 
 namespace ProjeWebApii.APİ.Controllers
@@ -23,6 +26,37 @@ namespace ProjeWebApii.APİ.Controllers
             var response = await mediator.Send(new GetAllProductsQueryRequest());
 
             return Ok(response);
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct(CreateProductCommandRequest request)
+        {
+            await mediator.Send(request);
+
+            return Ok();
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteProduct(DeleteProductCommandRequest request)
+        {
+            await mediator.Send(request);
+
+            return Ok();
+        }
+
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateProduct(UpdateProductCommandRequest request)
+        {
+            await mediator.Send(request);
+
+            return Ok();
         }
     }
 }

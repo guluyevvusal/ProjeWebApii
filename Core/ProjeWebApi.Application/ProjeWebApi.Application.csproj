@@ -16,8 +16,4 @@
     <ProjectReference Include="..\ProjeWebApi.Domen\ProjeWebApi.Domen.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Feature\Products\Command\" />
-  </ItemGroup>
-
 </Project>

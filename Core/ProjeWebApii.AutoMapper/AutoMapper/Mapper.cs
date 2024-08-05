@@ -7,7 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using IMapper = AutoMapper.IMapper;
+
 
 namespace ProjeWebApii.Mapper.AutoMapper
 {
@@ -16,7 +16,7 @@ namespace ProjeWebApii.Mapper.AutoMapper
     {
         public static List<TypePair> typePairs = new();
 
-        private IMapper MapperContainer;
+        private ProjeWebApi.Application.Interface.AutoMapper.IMapper MapperContainer;
 
 
 
@@ -82,7 +82,7 @@ namespace ProjeWebApii.Mapper.AutoMapper
 
             });
 
-            MapperContainer = config.CreateMapper();
+            MapperContainer = (ProjeWebApi.Application.Interface.AutoMapper.IMapper)config.CreateMapper();
         }
     }
 }

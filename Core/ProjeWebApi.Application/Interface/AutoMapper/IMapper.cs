@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjeWebApi.Application.Feature.Products.Command.CreateProduct;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,7 @@ namespace ProjeWebApi.Application.Interface.AutoMapper
 
         IList<TDestination> Map<TDestination>(IList<object> source, string? ignore = null);
         TDestination Map<TSource, TDestination>(TSource source);
+        object Map<T1, T2>(CreateProductCommandRequest request);
         //Nümune: List<Person> türündeki bir liste içindeki her Person verisini PersonDto tipine dönüştürmek üçün istifade edilir. 
 
 
