@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Query;
 using ProjeWebApi.Domen.Common;
+using ProjeWebApi.Domen.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +19,6 @@ namespace ProjeWebApi.Application.Interface.Repositories
         Task<T> UpdateAsync(T entity);
 
         Task HardDeleteAsync(T entity);
-
-     
-    
-    
-    
+        Task HardDeleteRangeAsync(List<ProductCategory> productCategories);
     }
 }

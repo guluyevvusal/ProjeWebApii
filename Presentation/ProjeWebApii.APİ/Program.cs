@@ -22,6 +22,8 @@ builder.Configuration
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddCustomMapper();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -22,6 +22,7 @@ namespace ProjeWebApi.Persistence.Context
         public DbSet<Category> Category{ get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Detail> Details { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
 
 
 

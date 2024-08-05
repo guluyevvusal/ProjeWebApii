@@ -47,9 +47,15 @@ namespace ProjeWebApi.Persistence.Repositories
 
 
 
-     
 
-        public async Task<T> UpdateAsync(T entity)
+        public async Task HardDeleteRangeAsync(IList<T> entity)
+        {
+            await Task.Run(() => Table.RemoveRange(entity));
+
+
+        }
+
+            public async Task<T> UpdateAsync(T entity)
         {
            await Task.Run(() => Table.Update(entity));
 
